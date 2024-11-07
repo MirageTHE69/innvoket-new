@@ -1,5 +1,9 @@
-import { fontBebasNeue } from "./layout";
+import { Hero } from "@/components/hero";
 
 export default function Home() {
-  return <div className={fontBebasNeue.className}></div>;
+  return (
+    <main>
+      <Hero />
+    </main>
+  );
 }
