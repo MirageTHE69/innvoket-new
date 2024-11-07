@@ -1,16 +1,14 @@
 import type { Metadata } from "next";
-import localFont from "next/font/local";
+import { Bebas_Neue, Roboto_Condensed } from "next/font/google";
 import "./globals.css";
 
-const geistSans = localFont({
-  src: "./fonts/GeistVF.woff",
-  variable: "--font-geist-sans",
-  weight: "100 900",
+export const fontBebasNeue = Bebas_Neue({
+  subsets: ["latin"],
+  weight: ["400"],
 });
-const geistMono = localFont({
-  src: "./fonts/GeistMonoVF.woff",
-  variable: "--font-geist-mono",
-  weight: "100 900",
+
+const fontRobotoCondensed = Roboto_Condensed({
+  subsets: ["latin"],
 });
 
 export const metadata: Metadata = {
@@ -26,9 +24,9 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
+        className={`${fontRobotoCondensed.className} min-h-screen flex flex-col`}
       >
-        {children}
+        <main className="flex-1">{children}</main>
       </body>
     </html>
   );
