@@ -2,6 +2,8 @@ import type { Metadata } from "next";
 import { Bebas_Neue, Roboto_Condensed } from "next/font/google";
 import "./globals.css";
 import { Navbar } from "@/components/navbar";
+import { Footer } from "@/components/footer";
+import { PageTransition } from "@/components/page-transition";
 
 export const fontBebasNeue = Bebas_Neue({
   subsets: ["latin"],
@@ -29,6 +31,7 @@ export default function RootLayout({
       >
         <Navbar />
         <main className="flex-1">{children}</main>
+        <Footer />
       </body>
     </html>
   );
