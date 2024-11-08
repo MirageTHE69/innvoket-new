@@ -5,6 +5,7 @@ import { useInView } from "react-intersection-observer";
 import { cn } from "@/lib/utils";
 import { Button } from "./button";
 import { Bebas_Neue } from "next/font/google";
+import Image from "next/image";
 
 const font = Bebas_Neue({
   subsets: ["latin"],
@@ -45,9 +46,22 @@ export function Hero() {
       initial="hidden"
       animate={inView ? "visible" : "hidden"}
       variants={containerVariants}
-      className="hero-pattern min-h-screen flex items-center justify-center relative overflow-hidden"
+      className="min-h-screen flex items-center justify-center relative overflow-hidden"
     >
-      <div className="absolute inset-0 bg-gradient-to-b from-black/50 to-black/20 z-0" />
+      {/* Background Image with Blur */}
+      <div className="absolute inset-0 overflow-hidden z-0">
+        <Image
+          src="/bg.jpg"
+          alt="Background Image"
+          layout="fill"
+          objectFit="cover"
+          priority
+          className="filter brightness-125" // Increase brightness to 125%
+        />
+      </div>
+
+      {/* Overlay Gradient */}
+      <div className="absolute inset-0 bg-gradient-to-b from-black/70 via-black/50 to-black/70 z-0" />
 
       <div className="max-w-screen-lg mx-auto px-4 sm:px-6 lg:px-8 py-32 text-center relative z-10">
         <motion.h1
@@ -80,7 +94,7 @@ export function Hero() {
 
         <motion.p
           variants={itemVariants}
-          className="mt-6 max-w-2xl mx-auto font-normal text-base md:text-xl text-white"
+          className="mt-6 max-w-2xl mx-auto font-normal text-base md:text-xl text-white/90"
         >
           Top-tier design solutions for tech firms and emerging businesses.
           Ditch the typical aesthetic methods and embrace efficiency and
@@ -97,11 +111,12 @@ export function Hero() {
         </motion.div>
       </div>
 
-      <div className="absolute inset-0 z-0">
+      {/* Animated Particles */}
+      <div className="absolute inset-0 z-[1]">
         {[...Array(20)].map((_, i) => (
           <motion.div
             key={i}
-            className="absolute w-2 h-2 bg-primary/20 rounded-full"
+            className="absolute w-2 h-2 bg-white/30 rounded-full"
             initial={{
               x: Math.random() * 100 + "%",
               y: Math.random() * 100 + "%",

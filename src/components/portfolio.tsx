@@ -67,7 +67,7 @@ function PortfolioCard({
       className="w-full min-h-screen flex sticky top-0"
     >
       <div className="max-w-6xl w-full mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="bg-gray-900 bg-opacity-90 p-8 rounded-3xl overflow-hidden shadow-xl border border-gray-700 h-[560px]">
+        <div className="bg-black p-8 rounded-3xl overflow-hidden shadow-xl border border-gray-700 h-[560px]">
           <div className="grid md:grid-cols-2 gap-8">
             <div className="p-8 md:p-12">
               <h3

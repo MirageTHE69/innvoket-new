@@ -22,7 +22,7 @@ export function SplashScreen() {
 
   return (
     <motion.div
-      className="fixed inset-0 z-50 flex items-center justify-center bg-gradient-to-br from-[#FF4D00] via-[#FF8A00] to-[#FFB800]"
+      className="fixed inset-0 z-50 flex items-center justify-center bg-gradient-to-br from-[#0d0d0d] via-[#212121] to-[#000000]"
       initial={{ opacity: 1 }}
       animate={{ opacity: 0 }}
       transition={{ duration: 0.5, delay: 2 }}

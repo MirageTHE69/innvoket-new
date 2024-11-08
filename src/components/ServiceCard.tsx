@@ -25,7 +25,7 @@ const ServiceCard: React.FC<ServiceCardProps> = ({
     <h3 className={`text-2xl font-extrabold uppercase mb-2 ${font.className}`}>
       {title}
     </h3>
-    <p className="text-sm text-start text-gray-600 mb-4">{description}</p>
+    <p className="text-lg  text-start text-gray-600 mb-4">{description}</p>
 
     <button
       className={`text-yellow-500 font-bold flex items-center hover:underline ${font.className}`}
