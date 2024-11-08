@@ -2,55 +2,47 @@
 
 import { motion } from "framer-motion";
 import { useEffect, useState } from "react";
-import { Loader2 } from "lucide-react";
 
 export function SplashScreen() {
   const [isVisible, setIsVisible] = useState(true);
 
   useEffect(() => {
-    const timer = setTimeout(() => {
+    const handleLoad = () => {
       setIsVisible(false);
-    }, 2000);
+    };
 
-    return () => clearTimeout(timer);
+    window.addEventListener("load", handleLoad);
+
+    return () => {
+      window.removeEventListener("load", handleLoad);
+    };
   }, []);
 
   if (!isVisible) return null;
 
   return (
     <motion.div
-      className="fixed inset-0 z-50 flex items-center justify-center bg-gradient-to-br from-black via-gray-900 to-black"
+      className="fixed inset-0 z-50 flex items-center justify-center bg-gradient-to-br from-[#FF4D00] via-[#FF8A00] to-[#FFB800]"
       initial={{ opacity: 1 }}
       animate={{ opacity: 0 }}
-      transition={{ duration: 0.5, delay: 1.5 }}
+      transition={{ duration: 0.5, delay: 2 }}
       onAnimationComplete={() => setIsVisible(false)}
     >
       <motion.div
-        initial={{ scale: 0.5, opacity: 0 }}
+        className="flex flex-col items-center"
+        initial={{ scale: 0.8, opacity: 0 }}
         animate={{ scale: 1, opacity: 1 }}
-        transition={{ duration: 0.5 }}
-        className="text-center relative"
+        transition={{ duration: 0.8, ease: "easeOut" }}
       >
-        <div className="absolute inset-0 -z-10">
-          {[...Array(3)].map((_, i) => (
-            <motion.div
-              key={i}
-              className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 rounded-full border-2 border-primary/30"
-              initial={{ width: "100px", height: "100px", opacity: 0 }}
-              animate={{
-                width: ["100px", "200px"],
-                height: ["100px", "200px"],
-                opacity: [0.5, 0],
-              }}
-              transition={{
-                duration: 2,
-                delay: i * 0.4,
-                repeat: Infinity,
-                ease: "easeOut",
-              }}
-            />
-          ))}
-        </div>
+        <motion.img
+          src="/logo.png"
+          alt="Innvoket Logo"
+          className="w-40 h-24 sm:w-32 sm:h-32 md:w-40 md:h-40 lg:w-56 lg:h-24"
+          initial={{ scale: 0.8, opacity: 1 }}
+          animate={{
+            scale: [1, 1.2, 1],
+          }}
+        />
       </motion.div>
     </motion.div>
   );

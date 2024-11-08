@@ -16,10 +16,10 @@ const portfolioItems = [
   {
     title: "GLOBAL CONNECT",
     description:
-      "Global Connect, an international logistics firm, needed a digital transformation. We created an intuitive website with real-time tracking features, developed a mobile app for customer convenience, and launched a targeted email marketing campaign to enhance their customer engagement.",
+      "Pixel Studio, a renowned creative agency, wanted a complete overhaul of their brand identity. We delivered a vibrant new logo, a cohesive brand strategy, and an engaging website",
     image: "/global-connect.avif",
     link: "/work/global-connect",
-    services: ["Web Development", "Mobile App Development", "Email Marketing"],
+    services: ["Web Development", "Mobile App Development"],
   },
   {
     title: "PIXEL STUDIO",
@@ -53,10 +53,9 @@ function PortfolioCard({
 
   const { scrollYProgress } = useScroll({
     target: ref,
-    offset: ["start end", "end start"],
   });
 
-  const y = useTransform(scrollYProgress, [0, 0.5, 1], [100, 0, -100]);
+  const y = useTransform(scrollYProgress, [0, 1, 1], [100, 0, -100]);
 
   return (
     <motion.div
@@ -65,10 +64,10 @@ function PortfolioCard({
       initial={{ opacity: 0 }}
       animate={{ opacity: inView ? 1 : 0 }}
       transition={{ duration: 0.8 }}
-      className="w-full min-h-screen flex items-center justify-center sticky top-0"
+      className="w-full min-h-screen flex sticky top-0"
     >
       <div className="max-w-6xl w-full mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="bg-slate-800 p-4 rounded-2xl overflow-hidden border border-gray-400">
+        <div className="bg-gray-900 bg-opacity-90 p-8 rounded-3xl overflow-hidden shadow-xl border border-gray-700 h-[560px]">
           <div className="grid md:grid-cols-2 gap-8">
             <div className="p-8 md:p-12">
               <h3
@@ -81,14 +80,19 @@ function PortfolioCard({
               </h3>
               <p className="text-gray-400 mb-8 text-lg">{item.description}</p>
               <div className="mb-8">
-                <h4 className="text-[hsl(var(--primary))] mb-3">
-                  Our Services:
+                <h4
+                  className={cn(
+                    "text-[hsl(var(--primary))] mb-3 tracking-wide",
+                    font.className
+                  )}
+                >
+                  TECHNOLOGIES
                 </h4>
-                <div className="flex flex-wrap gap-2">
+                <div className="flex flex-wrap gap-3">
                   {item.services.map((service) => (
                     <span
                       key={service}
-                      className="px-3 py-1 rounded-full bg-secondary text-sm text-gray-300"
+                      className="px-6 py-2 rounded-full bg-white/10 backdrop-blur-sm text-white border border-white/20 hover:bg-white/20 transition-colors"
                     >
                       {service}
                     </span>
