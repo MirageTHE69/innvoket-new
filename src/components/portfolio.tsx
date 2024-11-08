@@ -1,5 +1,4 @@
-"use client";
-
+import React, { useRef } from "react";
 import { motion, useScroll, useTransform } from "framer-motion";
 import { useInView } from "react-intersection-observer";
 import Image from "next/image";
@@ -46,20 +45,24 @@ function PortfolioCard({
   item: (typeof portfolioItems)[0];
   index: number;
 }) {
-  const [ref, inView] = useInView({
+  const scrollRef = useRef<HTMLElement | null>(null); // New ref for useScroll
+  const [inViewRef, inView] = useInView({
     threshold: 0.2,
     triggerOnce: false,
   });
 
   const { scrollYProgress } = useScroll({
-    target: ref,
+    target: scrollRef,
   });
 
   const y = useTransform(scrollYProgress, [0, 1, 1], [100, 0, -100]);
 
   return (
     <motion.div
-      ref={ref}
+      ref={(node) => {
+        scrollRef.current = node;
+        inViewRef(node); // Assign the node to inViewRef as well
+      }}
       style={{ y }}
       initial={{ opacity: 0 }}
       animate={{ opacity: inView ? 1 : 0 }}
