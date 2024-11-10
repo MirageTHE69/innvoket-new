@@ -1,9 +1,10 @@
+// components/Hero.tsx
 "use client";
 
 import { motion } from "framer-motion";
 import { useInView } from "react-intersection-observer";
-import { cn } from "@/lib/utils";
-import { Button } from "./button";
+import { cn } from "@/lib/utils"; // Named import
+import { Button } from "./button"; // Named import
 import { Bebas_Neue } from "next/font/google";
 import Image from "next/image";
 
@@ -53,8 +54,8 @@ export function Hero() {
         <Image
           src="/bg.jpg"
           alt="Background Image"
-          layout="fill"
-          objectFit="cover"
+          fill
+          style={{ objectFit: "cover" }}
           priority
           className="filter brightness-125" // Increase brightness to 125%
         />
